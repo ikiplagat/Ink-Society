@@ -5,7 +5,7 @@ body {
   color: #696a6b;
   margin-top: 5rem;
   font-family: 'Mirza', cursive;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h1,
@@ -115,7 +115,6 @@ footer {
 
 /* Style all font awesome icons */
 .fa {
-  margin: 5px;
   font-size: 15px;
   width: 15px;
   text-align: center;
@@ -131,4 +130,13 @@ footer {
 .mailto:hover {
   opacity: 0.7;
   color: #ffc288;
+}
+
+.photo {
+  background-image: url(../photos/1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f5f5f5;
+  height: 500px;
+  
 }

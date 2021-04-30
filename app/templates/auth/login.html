@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <main role="main" class="container">
-  <div class="row">
+  <div class="row pt-5">
     <div class="col-md-8">
       <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+            <fieldset class="form-group mt">
+                <legend class="border-bottom mb-4"><h3>Log In</h3></legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -22,7 +22,7 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.password.label(class="form-control-label") }}
+                    {{ form.password.label(class="form-control-label mt-2") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -34,12 +34,12 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-check">
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
+                <div class="form-check mt-2">
+                    {{ form.remember(class="form-check-input mt-2") }}
+                    {{ form.remember.label(class="form-check-label mt-2") }}
                 </div>
             </fieldset>
-            <div class="form-group">
+            <div class="form-group mt-3">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
             <small class="text-muted ml-2">
@@ -65,6 +65,7 @@
           </ul>
         </p>
       </div>
+      <hr>
     </div>
   </div>
 </main>
