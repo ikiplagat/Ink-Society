@@ -1,6 +1,6 @@
 body {
   background: #fafafa;
-  color: black;
+  color: #696a6b;
   margin-top: 5rem;
 }
 
@@ -10,7 +10,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #070707;
+  color: #ffc288;
 }
 
 .bg-steel {
@@ -95,3 +95,23 @@ footer {
   width: 100%;
 }
 
+.social-links {
+  display: block;
+  justify-content: space-between;
+}
+
+/* Style all font awesome icons */
+.fa {
+  margin: 5px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+  color: #ffc288;;
+}

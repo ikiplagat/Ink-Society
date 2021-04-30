@@ -11,6 +11,7 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       rel="stylesheet"
       href="{{url_for('static',filename='/css/index.css')}}"
@@ -29,13 +30,17 @@
     <title>Ink Society</title>
     {% endif %}
   </head>
+
+  <!-- Navbar block  -->
+  {% block navbar %} {% include 'navbar.html' %} {% endblock %}
   <body>
-    <!-- Navbar block  -->
-    {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+    
 
     <!-- Content block -->
 
-    {% block content %} {% endblock%}
+    {% block content %}
+    
+    {% endblock%}
 
     <!-- Footer block  -->
     {% block footer %} {% include 'footer.html' %} {% endblock %}
