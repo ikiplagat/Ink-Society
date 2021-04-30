@@ -144,6 +144,9 @@ footer {
   margin-bottom: 19px;
 }
 
-.whoops-margin {
-  margin-bottom: 327px;
+.whoops {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 471px;
 }
