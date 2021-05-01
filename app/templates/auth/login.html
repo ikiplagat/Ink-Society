@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<main role="main" class="container">
-  <div class="row pt-3">
-    <div class="col-md-8">
-      <div class="content-section">
+    <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group mt">
-                <legend class="border-bottom mb-4"><h3>Log In</h3></legend>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -22,7 +19,7 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
-                    {{ form.password.label(class="form-control-label mt-2") }}
+                    {{ form.password.label(class="form-control-label") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -34,12 +31,12 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-check mt-2">
-                    {{ form.remember(class="form-check-input mt-2") }}
-                    {{ form.remember.label(class="form-check-label mt-2") }}
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
                 </div>
             </fieldset>
-            <div class="form-group mt-3">
+            <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
             <small class="text-muted ml-2">
@@ -47,27 +44,9 @@
             </small>
         </form>
     </div>
-    <div class="border-top pt-3 pbtm">
+    <div class="border-top pt-3">
         <small class="text-muted">
             Need An Account? <a class="ml-2" href="{{ url_for('auth.register') }}">Sign Up Now</a>
         </small>
     </div>
-    </div>
-    <div class="col-md-4">
-      <div class="content-section">
-        <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Our Sidebar</h3>
-        <p class='text-muted'>You can put any information here you'd like.
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
-          </ul>
-        </p>
-      </div>
-      <hr>
-    </div>
-  </div>
-</main>
-    
 {% endblock content %}

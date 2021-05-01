@@ -3,26 +3,17 @@
 {% block content %}
 <div class="container">
 <div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
-
-    <!--Displaying user bio-->
-    {% if user.bio %}
-      <p> {{user.bio}}</p>
-    {%else%}
-      <p> {{user.username| capitalize}} has no bio </p>
-    {% endif %}
-  </div>
-
-  <!--Display profile photo-->
-  <div class="col-md-4">
-
+  <div class="media">
     {% if user.profile_pic_path %}
-    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+    <img class="rounded-circle account-img" src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
     {%else%}
     <p>No profile picture</p>
     {% endif %}
+    <div class="media-body">
+      <h2 class="account-heading">{{ current_user.username }}</h2>
+      <p class="text-secondary">{{ current_user.email }}</p>
+    </div>
+  </div>  
   </div>
 </div>
 </div>
