@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     posts = db.relationship('Post', backref='user', lazy=True)
-    comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    comments = db.relationship('Comment', backref='user', lazy='dynamic')
     
     @property
     def password(self):
@@ -41,7 +41,7 @@ class Post(db.Model):
     content = db.Column(db.Text(), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    comment = db.relationship('Comment',backref='post',lazy='dynamic')
+    comments = db.relationship('Comment',backref='post',lazy='dynamic')
 
     def save_post(self):
         db.session.add(self)

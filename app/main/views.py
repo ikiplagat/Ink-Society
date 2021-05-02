@@ -92,6 +92,18 @@ def update_post(post_id):
     return render_template('create_post.html', title = 'Update Post', form = form, legend = 'Update Post')
 
 
+@main.route('/post/<int:post_id>/delete', methods = ['POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.user != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('main.home'))
+
+
 @main.route('/comment/<int:post_id>', methods = ['POST','GET'])
 @login_required
 def comment(post_id):
@@ -109,30 +121,3 @@ def comment(post_id):
         return redirect(url_for('.comment', post_id = post_id))
     
     return render_template('comment.html', form =form, post = post,all_comments=all_comments)
-
-
-@main.route("/home<int:post_id>/delete", methods=['POST'])
-@login_required
-def delete_post(post_id):
-    post = Post.query.get_or_404(post_id)
-    if post.user != current_user:
-        abort(403)
-    db.session.delete(post)
-    db.session.commit()
-    flash('Your post has been deleted!', 'success')
-    return redirect(location)
-
-    return render_template('home.html', title='Home', posts=post)
-
-
-@main.route('/delete_comment/<post_id>/<comment_id>',methods=["POST","GET"])
-@login_required
-def delete_comment(post_id,comment_id):
-  post = Post.get_post(post_id)
-  comment = Comment.get_comments(comment_id)
-  if post.user != current_user:
-    abort(404)
-  comment.delete_comment()
-
-  flash("comment deleted")
-  return redirect(url_for('main.home',post_id=post.id,comment_id=comment.id))
