@@ -1,4 +1,4 @@
-{% macro displayPosts(posts) %} {% for post in posts %}
+{% macro displayPosts(posts) %} {% for post in posts.items %}
 <article class="media content-section">
   <img class="rounded-circle article-img" src="{{ url_for('static', filename='photos/') }}">
   <div class="media-body">
@@ -18,4 +18,5 @@
     <p class="article-content list-group-item list-group-item-light">{{ post.content }}</p>
   </div>
 </article>
-{% endfor %} {% endmacro %}
+{% endfor %}
+{% endmacro %}

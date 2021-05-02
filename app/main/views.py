@@ -9,9 +9,10 @@ from ..request import get_quotes
 
 @main.route("/", methods = ['GET'])
 def home():
+    page = request.args.get(('page', 1))
     quote=get_quotes()
     
-    post = Post.query.order_by(Post.date.desc()).all()
+    post = Post.query.order_by(Post.date.desc()).paginate(page=page, per_page=5)
     
     return render_template('home.html', title='Home', posts=post, quotes=quote)
 
@@ -120,3 +121,6 @@ def comment(post_id):
         return redirect(url_for('.comment', post_id = post_id))
     
     return render_template('comment.html', form =form, post = post,all_comments=all_comments)
+
+
+
