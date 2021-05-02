@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+<!-- Content block -->
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</h3>
+      <span class="tagline" itemprop="description">It’s like Google for people who blog.</span>
+      <div class="jumbotron mt-3 p-lg-2 text-center" style="background-color: bisque;">
+        {% for quote in quotes %}
+        <p><strong><i class="fa fa-quote-left" aria-hidden="true"></i> {{quotes.quote}} <i class="fa fa-quote-right" aria-hidden="true"></i></strong></p>
+        <p><strong>~ {{quotes.author}} ~</strong></p>
+        <a class="btn btn-outline-dark btn-sm" href="/" role="button" id="next">Next Quote</a>
+        {%endfor%}
+      </div>
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='photos/') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.user.username }}</a>
+          </div>
+          <h2 class="pt-3">
+            <a class="article-title" href="{{ post, post_id }}" style="color: black;">{{ post.title }}</a>
+          </h2>
+          <small class="text-muted">Posted on: {{ post.date.strftime("%d %B, %Y") }}</small>
+          {% if post.user == current_user %}
+            <div>
+            </div>
+          {% endif %}
+          <p class="article-content list-group-item list-group-item-light">{{ post.content }}</p>
+          <a class="mg btn btn-secondary btn-sm mt-1 mb-1" href="">Update</a>
+          <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          <p class="mt-2">
+            Add a comment
+            <a class="text-muted" href="/comment/{{post.id}}">here</a>.
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <div class="content-section">
+        <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Updates</h3>
+        <p class='text-muted'>You can put any information here you'd like.
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Latest Posts</li>
+            <li class="list-group-item list-group-item-light">Announcements</li>
+            <li class="list-group-item list-group-item-light">Calendars</li>
+            <li class="list-group-item list-group-item-light">etc</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+ <!-- Footer block  -->
+
+
+{% endblock%}

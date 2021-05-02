@@ -15,6 +15,13 @@
                 <p class="card-title" style="color: black;">{{ comment.comment }}</p>
               </div>
           </div>
+        {% if post.user == current_user%}
+        <div class="col-md-4">
+          <h5><a class="nav-link" style="color: black;" 
+            href="{{url_for('main.delete_comment',post_id=post.id,comment_id=comment.id)}}"><i
+            class="fa fa-trash" style="color: red;" aria-hidden="true"></i> Delete Comment</h5></a>
+        </div>
+        {%endif%}
       {% endfor %}
   </div>
   <div class="col-md-5 mt-5">

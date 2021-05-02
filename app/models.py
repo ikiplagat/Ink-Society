@@ -43,6 +43,19 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     comment = db.relationship('Comment',backref='post',lazy='dynamic')
 
+    def save_post(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_post(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def get_post(cls,id):
+        post=Post.query.filter_by(id=id).first()
+        return post
+
     def __repr__(self):
         return f"Post('{self.title}'"
     
@@ -57,6 +70,10 @@ class Comment(db.Model):
     def save_c(self):
         db.session.add(self)
         db.session.commit()
+        
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()    
 
     @classmethod
     def get_comments(cls,post_id):

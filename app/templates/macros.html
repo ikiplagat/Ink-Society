@@ -6,21 +6,16 @@
       <a class="mr-2" href="#">{{ post.user.username }}</a>
     </div>
     <h2 class="pt-3">
-      <a class="article-title" href="#" style="color: black;">{{ post.title }}</a>
+      <a class="article-title" href="{{ url_for('main.post', post_id=post.id) }}" style="color: black;">{{ post.title }}</a>
     </h2>
-    <small class="text-muted">Posted on: {{ post.date.strftime('%Y-%m-%d') }}</small>
+    <small class="text-muted">Posted on: {{ post.date.strftime("%d %B, %Y") }}</small>
     {% if post.user == current_user %}
-          <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
-            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-          </div>
-        {% endif %}
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Update</a>
+        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+      </div>
+    {% endif %}
     <p class="article-content list-group-item list-group-item-light">{{ post.content }}</p>
-    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-    <p class="mt-2">
-      Add a comment
-      <a class="text-muted" href="/comment/{{post.id}}">here</a>.
-    </p>
   </div>
 </article>
 {% endfor %} {% endmacro %}

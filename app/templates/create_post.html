@@ -2,6 +2,7 @@
 {%block styles%} {{ super() }} {%endblock%} 
 {% block content %}
 <div class="container col-md-6 content-section">
+  <legend class="border-bottom">{{legend}}</legend>
   {{ wtf.quick_form(form)}}
 </div>
 <!-- Footer block  -->
