@@ -19,7 +19,7 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     {{ form.password.label(class="form-control-label") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
@@ -32,13 +32,13 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-check">
+                <div class="form-check mt-3">
                     {{ form.remember(class="form-check-input") }}
                     {{ form.remember.label(class="form-check-label") }}
                 </div>
             </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+            <div class="form-group mt-3">
+                {{ form.submit(class="btn btn-outline-dark text-center") }}
             </div>
             <small class="text-muted ml-2">
                 <a href="#">Forgot Password?</a>

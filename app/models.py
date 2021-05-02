@@ -2,6 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -15,6 +16,7 @@ class User(db.Model, UserMixin):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     posts = db.relationship('Post', backref='user', lazy=True)
+    comment = db.relationship('Comment', backref='user', lazy='dynamic')
     
     @property
     def password(self):
@@ -36,8 +38,32 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
-    content = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text(), nullable=False)
+    date = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    comment = db.relationship('Comment',backref='post',lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.title}'"
+    
+    
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.Text(),nullable = False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
+    post_id = db.Column(db.Integer,db.ForeignKey('posts.id'),nullable = False)
+
+    def save_c(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,post_id):
+        comments = Comment.query.filter_by(post_id=post_id).all()
+
+        return comments
+
+    
+    def __repr__(self):
+        return f'comment:{self.comment}'        

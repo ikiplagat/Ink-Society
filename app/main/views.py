@@ -6,10 +6,11 @@ from flask_login import login_required, current_user
 from .forms import PostForm
 from .. import db, photos
 
-@main.route("/")
-@main.route("/home")
+@main.route("/", methods = ['GET'])
 def home():
-    return render_template('home.html', title='Home')
+    post = Post.query.order_by(Post.date.desc()).all()
+    
+    return render_template('home.html', title='Home', posts=post)
 
 
 @main.route("/about")
@@ -41,19 +42,10 @@ def update_pic(uname):
 @main.route('/create_post',methods = ['GET','POST'])
 @login_required
 def create_post():
-
-    '''
-    View root page function that returns the index page and its data
-    '''
-    
     title = 'create_post'
     form = PostForm()
     print(form.errors)
-    if form.is_submitted():
-        print('submitted')
-    if form.validate():
-        print("valid")
-    print(form.errors)
+    
     if form.validate_on_submit():
         title = form.title.data
         content = form.content.data
@@ -66,3 +58,7 @@ def create_post():
         return redirect(url_for("main.home"))
     
     return render_template('create_post.html', title = title, form = form)
+
+
+
+
