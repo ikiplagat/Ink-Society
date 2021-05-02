@@ -17,6 +17,7 @@ def register():
         
         flash('Your account has been created successfully! Please log in to continue.', 'success')
         return redirect(url_for('auth.login'))
+    
     return render_template('auth/register.html', title='Register', form=form)
 
 
