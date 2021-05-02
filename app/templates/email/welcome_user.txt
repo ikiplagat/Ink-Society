@@ -1,0 +1,8 @@
+Hi {{user.username}},
+Welcome to The Ink Society!
+Thanks for registering an account with us. We're excited to see you join the community! 
+
+Happy blogging. Cheers!!
+
+Sincerely,
+The Ink Society Team.

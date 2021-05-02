@@ -5,6 +5,7 @@ from . import auth
 from ..models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from .. import db
+from ..email import mail_message
 
 
 @auth.route("/register", methods=['GET', 'POST'])
@@ -14,6 +15,8 @@ def register():
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
+        
+        mail_message("Welcome to The Ink Society","email/welcome_user",user.email,user=user)
         
         flash('Your account has been created successfully! Please log in to continue.', 'success')
         return redirect(url_for('auth.login'))

@@ -6,6 +6,7 @@ from flask_login import login_required, current_user
 from .forms import PostForm,CommentForm
 from .. import db, photos
 from ..request import get_quotes
+from ..email import mail_message
 
 @main.route("/", methods = ['GET'])
 def home():

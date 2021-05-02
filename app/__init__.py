@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_bootstrap import Bootstrap
+from flask_mail import Mail
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -13,6 +14,7 @@ login_manager.login_message_category = 'info'
 db = SQLAlchemy()
 photos = UploadSet('photos',IMAGES)
 bootstrap = Bootstrap()
+mail = Mail()
 
 def create_app(config_name):
 
@@ -25,6 +27,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     bootstrap.init_app(app)
+    mail.init_app(app)
    
     # configure UploadSet
     configure_uploads(app,photos)
