@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 
 <!-- Content block -->
 {% block content %}
@@ -8,18 +9,7 @@
     <div class="col-md-8">
       <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</h3>
       <span class="tagline" itemprop="description">For What It's Worth...</span>
-      {% for post in posts %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
-        </article>
-    {% endfor %}
+        {{macro.displayPostList(post)}}
     </div>
     <div class="col-md-4">
       <div class="content-section">

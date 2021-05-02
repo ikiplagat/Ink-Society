@@ -3,24 +3,35 @@
 {% block content %}
 <div class="container">
 <div class="row">
-  <div class="media">
+  <div class="media col-md-6">
     {% if user.profile_pic_path %}
-    <img class="rounded-circle account-img" src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+    <img class="rounded-circle account-img" src="{{url_for('static',filename=user.profile_pic_path)}}" alt="">
     {%else%}
     <p>No profile picture</p>
     {% endif %}
     <div class="media-body">
       <h2 class="account-heading">{{ current_user.username }}</h2>
-      <p class="text-secondary">{{ current_user.email }}</p>
+      <h4>Email Address:</h4>
+      <p class="text-dark" style="text-decoration: underline;">{{ current_user.email }}</p>
       {% if user == current_user %}
-      <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
-
-        <input type="file"  name="photo" class="form-control" required>
-        <input type="submit">
+      <form class="col-md-5" action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+        <h5 style="color: #ffc288;">Update Profile Image:</h5>
+        <input type="file"  name="photo" class="form-control btn btn-dark" style="background-color: #393e46;" required>
+        <input class="btn btn-outline-dark mt-3" type="submit" style="color: #393e46;">
       </form>
       {% endif %}
     </div>
   </div>  
+  <div class="col-md-6">
+    <div class="content-section">
+      <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Greetings</h3>
+      <p class='text-muted'>From our team here at Ink Society.
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">Hi, have a great day and keep blogging!!!</li>
+          <img class="card-img" src="{{url_for('static', filename='pro.jpg')}}" height="250px" alt="">
+        </ul>
+      </p>
+    </div>
   </div>
 </div>
 </div>

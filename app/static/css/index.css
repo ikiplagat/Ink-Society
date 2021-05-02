@@ -150,3 +150,10 @@ footer {
   justify-content: center;
   height: 471px;
 }
+
+.thank-you {
+  background-image: url(../photos/1.jpg);
+  height: 480px;
+  background-repeat: no-repeat;
+  background-position: center;
+}

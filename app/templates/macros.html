@@ -1,0 +1,12 @@
+{% macro displayPostList(post_list) %} {% for post in post_list %}
+<article class="media content-section">
+  div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ post.user }}</a>
+    </div>
+    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article>
+{% endfor %} {% endmacro %}
+
