@@ -9,6 +9,10 @@
     </h2>
     <p>Posted on: {{post.date}}</p>
     <p class="article-content list-group-item list-group-item-light">{{ post.content }}</p>
+    <p class="">
+      Add a comment
+      <a class="text-muted" href="/comment/{{post.id}}">here</a>.
+    </p>
   </div>
 </article>
 {% endfor %} {% endmacro %}

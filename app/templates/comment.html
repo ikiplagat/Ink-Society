@@ -9,25 +9,26 @@
   <div class="col-md-7" >
       <h3 class="text-center" id="coms">Comments</h3>
       {% for comment in all_comments %}
-          <div class="pitch-card card" >
-              <div class="card-body">
+          <div>
+              <div>
                 <h5 class="" style="text-decoration: underline;">{{comment.user.username}}</h5>
                 <p class="card-title" style="color: black;">{{ comment.comment }}</p>
               </div>
           </div>
       {% endfor %}
   </div>
-  <div class="col-md-5  commentform">
+  <div class="col-md-5 mt-5">
       {{wtf.quick_form(form)}}
   </div>
   {%else%}
-  <div class="card">
-      <div class="card-body">
-        <p class="card-title">No Comments yet for this post. Be the first person to comment</p>
+  <div class="">
+      <div class="">
+        <p style="color: black;">No Comments yet for this post. Be the first person to comment</p>
       </div>
   </div> 
-  <div class="col-md-12">
+  <div class="col-md-6 mt-5">
       {{wtf.quick_form(form)}}
   </div>
   {%endif%}
 </div>
+{% endblock%}

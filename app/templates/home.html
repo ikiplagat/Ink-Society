@@ -8,8 +8,15 @@
   <div class="row">
     <div class="col-md-8">
       <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</h3>
-      <span class="tagline" itemprop="description">For What It's Worth...</span>
-        {{macro.displayPosts(posts)}}
+      <span class="tagline" itemprop="description">It’s like Google for people who blog.</span>
+      <div class="jumbotron mt-3">
+        {% for quote in quotes %}
+        <p><strong><i class="fa fa-quote-left" aria-hidden="true"></i> {{quotes.quote}} <i class="fa fa-quote-right" aria-hidden="true"></i></strong></p>
+        <p><strong>By: {{quotes.author}}</strong></p>
+        <a class="btn btn-outline-dark btn-sm" href="/" role="button" id="next">Next Quote</a>
+        {%endfor%}
+      </div>
+      <div>{{macro.displayPosts(posts)}}</div>
     </div>
     <div class="col-md-4">
       <div class="content-section">
@@ -28,6 +35,44 @@
 </main>
 
  <!-- Footer block  -->
- {% block footer %} {% include 'footer.html' %} {% endblock %}
+  <!-- Copyright -->
+  <div class="category-footer footer-copyright text-center mt-4" style="color: #9d9d9d">
+    © 2021 Copyright:
+    <a class="mailto"
+      href="mailto:ianjkiplagat@gmail.com"
+      style="color: white"
+      target="_blank"
+    >
+      Ian Kiplagat</a
+    >
+    <div class="social-links">
+      <a
+        href="https://www.facebook.com"
+        class="fa fa-facebook sl"
+        target="_blank"
+      ></a>
+      <a
+        href="https://www.twitter.com"
+        class="fa fa-twitter sl"
+        target="_blank"
+      ></a>
+      <a href="https://www.google.com" class="fa fa-google sl" target="_blank"></a>
+      <a
+        href="https://www.pinterest.com"
+        class="fa fa-pinterest sl"
+        target="_blank"
+      ></a>
+      <a
+        href="https://instagram.com"
+        class="fa fa-instagram sl"
+        target="_blank"
+      ></a>
+      <a
+        href="https://www.youtube.com"
+        class="fa fa-youtube sl"
+        target="_blank"
+      ></a>
+    </div>
+  </div>
 
 {% endblock%}

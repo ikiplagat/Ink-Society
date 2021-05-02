@@ -1,16 +1,20 @@
 
 from flask import Flask, render_template, url_for, flash, redirect, abort, request
 from . import main
-from ..models import User, Post
+from ..models import User, Post, Comment
 from flask_login import login_required, current_user
-from .forms import PostForm
+from .forms import PostForm,CommentForm
 from .. import db, photos
+from ..request import get_quotes
 
 @main.route("/", methods = ['GET'])
 def home():
+    quote=get_quotes()
+    print(quote)
+    
     post = Post.query.order_by(Post.date.desc()).all()
     
-    return render_template('home.html', title='Home', posts=post)
+    return render_template('home.html', title='Home', posts=post, quotes=quote)
 
 
 @main.route("/about")
@@ -59,6 +63,24 @@ def create_post():
     
     return render_template('create_post.html', title = title, form = form)
 
+
+@main.route('/comment/<int:post_id>', methods = ['POST','GET'])
+@login_required
+def comment(post_id):
+    form = CommentForm()
+    post = Post.query.get(post_id)
+    all_comments = Comment.query.filter_by(post_id = post_id).all()
+    
+    if form.validate_on_submit():
+        comment = form.comment.data 
+        post_id = post_id
+        user_id = current_user._get_current_object().id
+        new_comment = Comment(comment = comment,user_id = user_id,post_id = post_id)
+        new_comment.save_c()
+        
+        return redirect(url_for('.comment', post_id = post_id))
+    
+    return render_template('comment.html', form =form, post = post,all_comments=all_comments)
 
 
 

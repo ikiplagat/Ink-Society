@@ -13,3 +13,8 @@ class PostForm(FlaskForm):
     def validate_post(self,data_field):
             if Post(title =data_field.data,content =data_field.data).first():
                 raise ValidationError('Error in displaying post')
+            
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Post comment', validators=[Required()])
+    submit = SubmitField('Submit')            

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="pt-5">
+<div class="pt-4">
     <div class="container col-md-6 content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -51,4 +51,6 @@
         </small>
     </div>
 </div>    
+<!-- Footer block  -->
+{% block footer %} {% include 'footer.html' %} {% endblock %}   
 {% endblock content %}

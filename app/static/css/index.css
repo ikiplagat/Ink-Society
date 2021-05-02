@@ -101,11 +101,21 @@ a.article-title:hover {
   margin-right: 5px;
 }
 
-footer {
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #222831;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.category-footer {
   position: relative;
   bottom: 0;
-  background-color: #393e46;
+  background-color: #222831;
   width: 100%;
+  margin-top: 80px;
+  padding-top: 5px;
 }
 
 .social-links {
@@ -114,7 +124,7 @@ footer {
 }
 
 /* Style all font awesome icons */
-.fa {
+.sl {
   font-size: 15px;
   width: 15px;
   text-align: center;
@@ -122,7 +132,7 @@ footer {
   color: #ffffff;
 }
 
-.fa:hover {
+.sl:hover {
   opacity: 0.7;
   color: #ffc288;
 }
@@ -157,3 +167,4 @@ footer {
   background-repeat: no-repeat;
   background-position: center;
 }
+
