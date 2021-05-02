@@ -17,6 +17,18 @@ def home():
     return render_template('home.html', title='Home', posts=post, quotes=quote)
 
 
+@main.route("/user/<string:username>", methods = ['GET'])
+def user_post(username):
+    page = request.args.get(('page', 1))
+    user = User().query.filter_by(username=username).first_or_404()
+    
+    post = Post.query.filter_by(user=user)\
+    .order_by(Post.date.desc())\
+    .paginate(page=page, per_page=5)
+    
+    return render_template('user_post.html', title='User posts', posts=post, user=user)
+
+
 @main.route("/about")
 def about():
     return render_template('about.html', title='About')

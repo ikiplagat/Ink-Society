@@ -3,7 +3,7 @@
   <img class="rounded-circle article-img" src="{{ url_for('static', filename='photos/') }}">
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="#">{{ post.user.username }}</a>
+      <a class="mr-2" href="{{ url_for('main.user_post', username = post.user.username) }}">{{ post.user.username }}</a>
     </div>
     <h2 class="pt-3">
       <a class="article-title" href="{{ url_for('main.post', post_id=post.id) }}" style="color: black;">{{ post.title }}</a>
