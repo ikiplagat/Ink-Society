@@ -10,7 +10,6 @@ from ..request import get_quotes
 @main.route("/", methods = ['GET'])
 def home():
     quote=get_quotes()
-    print(quote)
     
     post = Post.query.order_by(Post.date.desc()).all()
     
