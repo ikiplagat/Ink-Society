@@ -35,7 +35,7 @@ def about():
     return render_template('about.html', title='About')
 
 
-@main.route('/user/<uname>')
+@main.route('/account/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
 

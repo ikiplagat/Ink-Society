@@ -35,9 +35,11 @@ def create_app(config_name):
     # Registering the blueprint
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
+    from app.errors.handlers import errors as errors_blueprint
     
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth_blueprint,url_prefix = "/auth")
+    app.register_blueprint(errors_blueprint)
     
     # setting config
     from .request import configure_request
