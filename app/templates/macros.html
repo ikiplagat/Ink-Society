@@ -1,22 +1,44 @@
 {% macro displayPosts(posts) %} {% for post in posts.items %}
 <article class="media content-section">
-  <img class="rounded-circle article-img" src="{{ url_for('static', filename='photos/') }}">
+  <img
+    class="rounded-circle article-img"
+    src="{{url_for('static',filename=post.user.profile_pic_path)}}"
+  />
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{{ url_for('main.user_post', username = post.user.username) }}">{{ post.user.username }}</a>
+      <a
+        class="mr-2"
+        href="{{ url_for('main.user_post', username = post.user.username) }}"
+        >{{ post.user.username }}</a
+      >
     </div>
     <h2 class="pt-3">
-      <a class="article-title" href="{{ url_for('main.post', post_id=post.id) }}" style="color: black;">{{ post.title }}</a>
+      <a
+        class="article-title"
+        href="{{ url_for('main.post', post_id=post.id) }}"
+        style="color: black"
+        >{{ post.title }}</a
+      >
     </h2>
-    <small class="text-muted">Posted on: {{ post.date.strftime("%d %B, %Y") }}</small>
+    <small class="text-muted"
+      >Posted on: {{ post.date.strftime("%d %B, %Y") }}</small
+    >
     {% if post.user == current_user %}
-      <div>
-        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Update</a>
-        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-      </div>
+    <div>
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="">Update</a>
+      <button
+        type="button"
+        class="btn btn-danger btn-sm m-1"
+        data-toggle="modal"
+        data-target="#deleteModal"
+      >
+        Delete
+      </button>
+    </div>
     {% endif %}
-    <p class="article-content list-group-item list-group-item-light">{{ post.content }}</p>
+    <p class="article-content list-group-item list-group-item-light">
+      {{ post.content }}
+    </p>
   </div>
 </article>
-{% endfor %}
-{% endmacro %}
+{% endfor %} {% endmacro %}

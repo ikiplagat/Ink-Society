@@ -9,12 +9,10 @@
     <div class="col-md-8">
       <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</h3>
       <span class="tagline" itemprop="description">It’s like Google for people who blog.</span>
-      <div class="jumbotron mt-3 p-lg-2 text-center" style="background-color: bisque;">
-        {% for quote in quotes %}
-        <p><strong><i class="fa fa-quote-left" aria-hidden="true"></i> {{quotes.quote}} <i class="fa fa-quote-right" aria-hidden="true"></i></strong></p>
-        <p><strong>~ {{quotes.author}} ~</strong></p>
+      <div class="jumbotron mt-3 p-lg-2 text-center mb-5" style="background-color: bisque;">
+        <p><strong><i class="fa fa-quote-left" aria-hidden="true"></i> {{quote.quote}} <i class="fa fa-quote-right" aria-hidden="true"></i></strong></p>
+        <p><strong>~ {{quote.author}} ~</strong></p>
         <a class="btn btn-outline-dark btn-sm" href="/" role="button" id="next">Next Quote</a>
-        {%endfor%}
       </div>
       <div>{{macro.displayPosts(posts)}}</div>
     </div>
